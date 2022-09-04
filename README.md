@@ -1,1 +1,1 @@
-# calculaore
+# calculator
