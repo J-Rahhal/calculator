@@ -1,0 +1,20 @@
+//select elements
+total = document.getElementsByClassName('total');
+zero = document.getElementById("zero");
+one = document.getElementById("one");
+two = document.getElementById("two");
+three = document.getElementById("three");
+four = document.getElementById("four");
+five = document.getElementById("five");
+six = document.getElementById("six");
+seven = document.getElementById("seven");
+eight = document.getElementById("eight");
+nine = document.getElementById("nine");
+equal = document.getElementById("equal");
+addition= document.getElementById("addition");
+subtraction= document.getElementById("subtraction");
+multiplication= document.getElementById("multiplication");
+division= document.getElementById("division");
+percentage = document.getElementById("percentage");
+ac= document.getElementById("AC");
+ce = document.getElementById("CE");
