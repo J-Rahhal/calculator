@@ -19,21 +19,49 @@ percentage = document.getElementById("percentage");
 ac= document.getElementById("AC");
 ce = document.getElementById("CE");
 
-zero.addEventListener("click",()=> total.innerText=zero.value);
-one.addEventListener("click",()=> total.innerText=one.value);
-two.addEventListener("click",()=> total.innerText=two.value);
-three.addEventListener("click",()=> total.innerText=three.value);
-four.addEventListener("click",()=> total.innerText=four.value);
-five.addEventListener("click",()=> total.innerText=five.value);
-six.addEventListener("click",()=> total.innerText=six.value);
-seven.addEventListener("click",()=> total.innerText=seven.value);
-eight.addEventListener("click",()=> total.innerText=eight.value);
-nine.addEventListener("click",()=> total.innerText=nine.value);
+//set initial text and value to zero
+total.innerText =0;
+total.setAttribute("value",zero.value);
 
-function add(valOne, valTwo){}
+const numArr = [zero, one, two, three, four, five, six, seven, eight, nine];
 
-function subtraction(valOne, valTwo){}
+//clearAll
+let clearAll = ac.addEventListener("click",()=>{
+    total.innerText = zero.value;
+    //reset value to zero
+    total.setAttribute('value', zero.value);
+});
 
-function multiply(valOne, valTwo){}
+//delete last digit
+let clearLast = ce.addEventListener("click",()=> {});
 
-function divide(valOne, valTwo){}
+//get value of each clicked element
+function getValue() {
+    numArr.forEach(num => {
+        num.addEventListener("click",()=>{
+            //if the displayed number is 0 than change it to the clicked number
+            if(total.innerText==0){
+                total.innerText = num.value;
+            }
+            else {
+                //if the number is not 0 the append the numbers
+                total.innerText += num.value;
+            }
+            total.setAttribute('value', total.innerText);
+        });
+    });
+
+}
+
+getValue();
+
+//operations
+const add = (valOne, valTwo) => valOne + valTwo;
+
+const subtract=(valOne, valTwo) => valOne - valTwo;
+
+const multiply = (valOne, valTwo) => valOne * valTwo;
+
+const divide= (valOne, valTwo) => valOne / valTwo;
+
+const operate = (operator, valOne, valTwo) => {}
