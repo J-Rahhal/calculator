@@ -33,7 +33,19 @@ let clearAll = ac.addEventListener("click",()=>{
 });
 
 //delete last digit
-let clearLast = ce.addEventListener("click",()=> {});
+let clearLast = ce.addEventListener("click",(e)=> {
+    //get length
+    let len = total.innerText.length;
+    //if length is 1 and not 0 replace last digit with zero
+    if(len==1 ){
+        total.innerText = 0;
+    }
+    //delete last digit
+    else {
+        total.innerText=total.innerText.slice(0,-1);
+    }
+
+});
 
 //get value of each clicked element
 function getValue() {
