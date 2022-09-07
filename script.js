@@ -71,3 +71,14 @@ const operate =(operator, a, b) => {
     }
     return value;
 }
+
+//display calculation result
+const display= () => {
+    displayValue = operate(sign, parseFloat(result), parseFloat(operand));
+    total.innerText = displayValue;
+};
+
+//display result on click
+equals.addEventListener('click', display);
+getOperator();
+getNumber();
