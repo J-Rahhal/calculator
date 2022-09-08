@@ -13,14 +13,25 @@ body {
     align-items: center;
   }
 
-  .total > span {
+  #previous-number {
+    /* background-color: blue; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    font-size: 40px;
+  }
+
+  #current-number {
     height: 100%;
     font-size: 70px;
+    width: 100%;
     color: white;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
   }
+
   .container {
     height: 70%;
     width: 22%;
@@ -35,6 +46,10 @@ body {
     background-color: #5A5A5A;
     margin: 20px auto;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
   }
   .buttons {
     height: 70%;

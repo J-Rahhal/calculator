@@ -1,7 +1,8 @@
 //select elements
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
-const total = document.querySelector('span');
+const total = document.getElementById('current-number');
+const previous = document.getElementById('previous-number');
 const equals = document.getElementById('equal');
 let result = '';
 let operand = '';
@@ -10,39 +11,34 @@ let value = '';
 let displayValue = '';
 
 //get clicked number
-const getNumber= () =>{
-    total.innerText = 0;
-    numbers.forEach(number => {
-        number.addEventListener('click', () =>{
-            if(total.innerText==0){
-                total.innerText = number.value;
-                result = total.innerText;
-                total.innerText = number.value;
-                operand= number.value;
-                total.setAttribute('value', total.innerText);
-            }
-            else if(displayValue !== '')  {
-                total.innerText = displayValue;
-                result = displayValue;
-                total.setAttribute('value', result);
-                operand = number.value;
-                total.innerText = operand;
-                total.setAttribute('value', total.innerText);
-            }
-
-        });
+numbers.forEach(number => {
+    number.addEventListener('click',(e)=>{
+        getNumber(e.target.value);
     });
+});
 
-};
+const getNumber = (number) => {
+    if(operand.length<10){
+        operand +=number;
+        total.textContent= operand;
+    }
+}
 
 //get clicked operator
-const getOperator = () => {
-    operators.forEach(operator => {
-        operator.addEventListener('click', () => {
-                sign = operator.value;
-                console.log(sign);
-        });
+
+operators.forEach(operator => {
+    operator.addEventListener('click', (e) => {
+            getOperator(e.target.value);
     });
+});
+
+const getOperator = (operator) => {
+    result = operand;
+    sign = operator;
+    previous.textContent = result +sign;
+    operand = "";
+    total.textContent = "";
+
 
 }
 
@@ -52,7 +48,6 @@ const multiply = (a, b) => a*b;
 const divide = (a, b) => a / b;
 
 const operate =(operator, a, b) => {
-
     switch (operator){
         case '+':
             value = add(a,b);
@@ -74,11 +69,10 @@ const operate =(operator, a, b) => {
 
 //display calculation result
 const display= () => {
-    displayValue = operate(sign, parseFloat(result), parseFloat(operand));
-    total.innerText = displayValue;
+    displayValue = operate(sign, parseFloat(operand), parseFloat(result));
+    // previous.textContent = displayValue;
+    total.textContent = displayValue;
 };
 
 //display result on click
 equals.addEventListener('click', display);
-getOperator();
-getNumber();
