@@ -4,11 +4,15 @@ const operators = document.querySelectorAll('.operator');
 const total = document.getElementById('current-number');
 const previous = document.getElementById('previous-number');
 const equals = document.getElementById('equal');
+AC = document.getElementById("AC");
+CE = document.getElementById("CE");
+
 let result = '';
 let operand = '';
 let sign = '';
 let value = '';
 let displayValue = '';
+let Ans="";
 
 //get clicked number
 numbers.forEach(number => {
@@ -33,14 +37,26 @@ operators.forEach(operator => {
 });
 
 const getOperator = (operator) => {
-    result = operand;
-    sign = operator;
-    previous.textContent = result +sign;
-    operand = "";
-    total.textContent = "";
-
+    if(Ans==""){
+       result = operand;
+        sign = operator;
+        previous.textContent = result +sign;
+        operand = "";
+        total.textContent = "";
+    }else{
+        result =Ans;
+        sign = operator;
+        previous.textContent = result+sign;
+        operand ="";
+        total.textContent = "";
+    }
 
 }
+
+AC.addEventListener('click', (e)=>{
+    total.textContent =0;
+    previous.textContent = "";
+});
 
 const add = (a, b) => a+b;
 const subtract = (a, b) => a-b;
@@ -70,8 +86,9 @@ const operate =(operator, a, b) => {
 //display calculation result
 const display= () => {
     displayValue = operate(sign, parseFloat(operand), parseFloat(result));
-    // previous.textContent = displayValue;
-    total.textContent = displayValue;
+    Ans=displayValue;
+    total.textContent = Ans;
+    // previous.textContent = Ans;
 };
 
 //display result on click
