@@ -53,9 +53,16 @@ const getOperator = (operator) => {
 
 }
 
-AC.addEventListener('click', (e)=>{
+AC.addEventListener('click', ()=>{
     total.textContent =0;
     previous.textContent = "";
+});
+
+CE.addEventListener('click', ()=>{
+    total.textContent = total.textContent.slice(0,-1);
+    if(total.textContent.length==0){
+        total.textContent =0;
+    }
 });
 
 const add = (a, b) => a+b;
