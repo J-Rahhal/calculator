@@ -42,7 +42,7 @@ const getOperator = (sign) => {
         operator = sign;
         previousNumber.innerText = previousNum+ " " +operator;
         currentNum = "";
-        currentNumber.innerText = "";
+        currentNumber.innerText = 0;
     }else if(currentNum == ""){
         operator = sign
         currentNumber.innerText = 0;
@@ -58,16 +58,22 @@ const getOperator = (sign) => {
 
 }
 
+//clear calculator
 AC.addEventListener('click', ()=>{
-    total.textContent =0;
-    previous.textContent = "";
+    previousNumber.textContent = "";
+    currentNumber.innerText = 0;
+    currentNum = "";
+    previousNum ="";
 });
 
+//delete one digit at a time
 CE.addEventListener('click', ()=>{
-    total.textContent = total.textContent.slice(0,-1);
-    if(total.textContent.length==0){
-        total.textContent =0;
-    }
+   currentNumber.innerText = currentNumber.innerText.slice(0,-1);
+   currentNum = currentNumber.innerText;
+   if(currentNumber.innerText.length == 0) {
+        currentNumber.innerText = 0;
+        currentNum = "";
+   }
 });
 
 const add = (a, b) => a+b;
@@ -78,29 +84,31 @@ const divide = (a, b) => a / b;
 const operate =(operator, a, b) => {
     switch (operator){
         case '+':
-            value = add(a,b);
+            result = add(a,b);
             break;
         case '-':
-            value = subtract(a,b);
+            result = subtract(a,b);
             break;
-        case '*':
-            value = multiply(a,b);
+        case 'x':
+            result = multiply(a,b);
             break;
         case '/':
-            value = divide(a,b);
+            result = divide(a,b);
             break;
         default:
             break;
     }
-    return value;
+    return result;
 }
 
 //display calculation result
 const display= () => {
-    displayValue = operate(sign, parseFloat(operand), parseFloat(result));
-    Ans=displayValue;
-    total.textContent = Ans;
-    // previous.textContent = Ans;
+    let displayValue = operate(operator, parseFloat(previousNum), parseFloat(currentNum));
+    currentNumber.innerText = displayValue;
+    previousNum = displayValue;
+    previousNumber.innerText =previousNum;
+    operator = "";
+    currentNum = "";
 };
 
 //display result on click
