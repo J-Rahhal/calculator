@@ -1,18 +1,18 @@
 //select elements
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
-const total = document.getElementById('current-number');
-const previous = document.getElementById('previous-number');
+const currentNumber = document.getElementById('current-number');
+const previousNumber = document.getElementById('previous-number');
 const equals = document.getElementById('equal');
-AC = document.getElementById("AC");
-CE = document.getElementById("CE");
+const AC = document.getElementById("AC");
+const CE = document.getElementById("CE");
+const off =document.getElementById('off');
+const decimal = document.getElementById('decimal');
 
+let previousNum = '';
+let currentNum = '';
+let operator = '';
 let result = '';
-let operand = '';
-let sign = '';
-let value = '';
-let displayValue = '';
-let Ans="";
 
 //get clicked number
 numbers.forEach(number => {
@@ -22,33 +22,38 @@ numbers.forEach(number => {
 });
 
 const getNumber = (number) => {
-    if(operand.length<10){
-        operand +=number;
-        total.textContent= operand;
+    if(currentNum.length<=10){
+        currentNum +=number;
+        currentNumber.innerText= currentNum;
     }
 }
 
 //get clicked operator
 
-operators.forEach(operator => {
-    operator.addEventListener('click', (e) => {
+operators.forEach(sign => {
+    sign.addEventListener('click', (e) => {
             getOperator(e.target.value);
     });
 });
 
-const getOperator = (operator) => {
-    if(Ans==""){
-       result = operand;
-        sign = operator;
-        previous.textContent = result +sign;
-        operand = "";
-        total.textContent = "";
-    }else{
-        result =Ans;
-        sign = operator;
-        previous.textContent = result+sign;
-        operand ="";
-        total.textContent = "";
+const getOperator = (sign) => {
+    if(previousNum==""){
+       previousNum = currentNum;
+        operator = sign;
+        previousNumber.innerText = previousNum+ " " +operator;
+        currentNum = "";
+        currentNumber.innerText = "";
+    }else if(currentNum == ""){
+        operator = sign
+        currentNumber.innerText = 0;
+        previousNumber.innerText = previousNum + " " +operator;
+        currentNum ="";
+    }else {
+        display();
+        operator = sign;
+        previousNumber.innerText = previousNum + " " + operator;
+        currentNumber.innerText ="";
+        currentNum = "";
     }
 
 }
