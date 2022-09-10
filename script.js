@@ -145,3 +145,39 @@ const keyboardPressListener = (e) => {
 
 //event listener to window that listens to any keypress
 window.addEventListener('keydown', keyboardPressListener);
+
+//turn off calculator
+const turnOffCalculator = (e) => {
+  let status = (e.target.value === "OFF");
+  numbers.forEach(number => {
+    if(status){
+        number.setAttribute("disabled", status);
+        AC.setAttribute('disabled', status);
+        CE.setAttribute('disabled', status);
+        decimal.setAttribute('disabled', status);
+        equals.setAttribute('disabled', status);
+    }else {
+        number.removeAttribute("disabled");
+        AC.removeAttribute('disabled');
+        CE.rem('disabled');
+        decimal.rem('disabled');
+        equals.rem('disabled');
+    }
+  });
+
+
+  operators.forEach(operator => {
+    if(status){
+        operator.setAttribute("disabled", status);
+    }else {
+        operator.removeAttribute("disabled");
+    }
+  });
+
+
+
+  e.target.value = status? 'ON' : 'OFF';
+}
+
+
+off.addEventListener('click', turnOffCalculator);
