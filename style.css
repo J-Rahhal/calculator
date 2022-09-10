@@ -2,14 +2,22 @@ html{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 body {
     height: 100vh;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(58, 1, 1);
+  }
+
+  h1 {
+    color: antiquewhite;
+    font-size: 50px;
   }
 
   #previous-number {

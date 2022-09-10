@@ -66,15 +66,19 @@ AC.addEventListener('click', ()=>{
     previousNum ="";
 });
 
+
+
 //delete one digit at a time
-CE.addEventListener('click', ()=>{
-   currentNumber.innerText = currentNumber.innerText.slice(0,-1);
-   currentNum = currentNumber.innerText;
-   if(currentNumber.innerText.length == 0) {
+const clearOneDigit = () => {
+    currentNumber.innerText = currentNumber.innerText.slice(0,-1);
+    currentNum = currentNumber.innerText;
+    if(currentNumber.innerText.length == 0) {
         currentNumber.innerText = 0;
         currentNum = "";
    }
-});
+}
+
+CE.addEventListener('click', clearOneDigit );
 
 const add = (a, b) => a+b;
 const subtract = (a, b) => a-b;
@@ -111,5 +115,33 @@ const display= () => {
     currentNum = "";
 };
 
+//add decimal point
+const addDecimal = () => {
+    if(!currentNum.includes(".")) {
+        currentNum += ".";
+        currentNumber.innerText = currentNum;
+    }
+}
+
+//let the input number take one decimal point
+decimal.addEventListener('click', addDecimal);
+
 //display result on click
 equals.addEventListener('click', display);
+
+const keyboardPressListener = (e) => {
+    e.preventDefault();
+
+    if (e.key >=0 && e.key <=9) getNumber(e.key);
+    if (e.key =="Enter" || (e.key =="=" && currentNum!="" &&previousNum!=="")) display();
+    if (e.key =="+" || e.key =="-" || e.key =="/") getOperator(e.key)
+    if(e.key == "*") getOperator("x");
+    if (e.key ==".") addDecimal();
+    if(e.key =="Backspace") {
+        clearOneDigit();
+    }
+}
+
+
+//event listener to window that listens to any keypress
+window.addEventListener('keydown', keyboardPressListener);
