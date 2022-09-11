@@ -159,9 +159,9 @@ const turnOffCalculator = (e) => {
     }else {
         number.removeAttribute("disabled");
         AC.removeAttribute('disabled');
-        CE.rem('disabled');
-        decimal.rem('disabled');
-        equals.rem('disabled');
+        CE.removeAttribute('disabled');
+        decimal.removeAttribute('disabled');
+        equals.removeAttribute('disabled');
     }
   });
 
