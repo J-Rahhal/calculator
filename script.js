@@ -157,6 +157,7 @@ const turnOffCalculator = (e) => {
         decimal.setAttribute('disabled', status);
         equals.setAttribute('disabled', status);
         currentNumber.innerText ="";
+        previousNumber.innerText ="";
     }else {
         number.removeAttribute("disabled");
         AC.removeAttribute('disabled');
