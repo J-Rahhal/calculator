@@ -156,12 +156,15 @@ const turnOffCalculator = (e) => {
         CE.setAttribute('disabled', status);
         decimal.setAttribute('disabled', status);
         equals.setAttribute('disabled', status);
+        currentNumber.innerText ="";
     }else {
         number.removeAttribute("disabled");
         AC.removeAttribute('disabled');
         CE.removeAttribute('disabled');
         decimal.removeAttribute('disabled');
         equals.removeAttribute('disabled');
+        currentNum ="";
+        currentNumber.innerText=0;
     }
   });
 
