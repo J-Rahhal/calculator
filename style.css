@@ -58,7 +58,7 @@ body {
   }
 
   input[type="button"]{
-    height: 50px;
+    height: 30px;
     width: 70px;
     border-radius: 10px;
     background-color: transparent;
